@@ -8,16 +8,13 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class test {
 
-    @BeforeAll
     static void prepararBD() {
         DatabaseHelper.crearTabla();
     }
 
     @Test
-    @Order(1)
     void testInsertarGasto() throws SQLException {
         Gasto gasto = new Gasto("JUnit Test", 200.50, LocalDate.now().toString());
         DatabaseHelper.insertarGasto(gasto);
@@ -28,7 +25,6 @@ class test {
     }
 
     @Test
-    @Order(2)
     void testObtenerGastos() {
         List<Gasto> gastos = DatabaseHelper.obtenerGastos();
         assertNotNull(gastos, "La lista de gastos no debe ser nula");
@@ -36,14 +32,12 @@ class test {
     }
 
     @Test
-    @Order(3)
     void testObtenerTotalGastos() {
         double total = DatabaseHelper.obtenerTotalGastos();
         assertTrue(total > 0, "El total de gastos debe ser mayor que 0");
     }
 
     @Test
-    @Order(4)
     void testEliminarGasto() throws SQLException {
         // Insertamos un gasto temporal
         Gasto gasto = new Gasto("Temporal", 50.0, LocalDate.now().toString());
