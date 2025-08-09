@@ -46,3 +46,13 @@ o	En la esquina inferior derecha de IntelliJ, seleccioné la rama donde trabajé
 4.	Ejecutar el proyecto
 o	Configuré el entorno necesario (si es Java, seleccioné la versión de JDK correcta).
 o	Presioné el botón Run para ejecutar el proyecto normalmente.
+
+NOTA: PARA QUE SE PUEDAN CORRER LAS PRUEBAS UNITARIAS HAY QUE HACER LO SIGUIENTE
+1.	Abrir IntelliJ IDEA y carga el proyecto.
+2.	En la barra superior, ir a Run > Edit Configurations...
+3.	En la ventana que aparece, busca la configuración de ejecución de tests que usas (puede estar como un perfil de ejecución tipo JUnit o All in package).
+o	Si no tienes una configuración creada, crea una nueva pulsando el botón + y selecciona JUnit.
+4.	Selecciona la configuración de test a la que quieres agregar las opciones.
+5.	En el campo VM options, agrega las siguientes líneas --add-opens org.junit.platform.commons/org.junit.platform.commons.util=ALL-UNNAMED --add-opens org.junit.platform.commons/org.junit.platform.commons.logging=ALL-UNNAMED --add-opens org.junit.platform.commons/org.junit.platform.commons=ALL-UNNAMED 
+6.	Guardar la configuración y cerrar la ventana.
+7.	Correr los tests
